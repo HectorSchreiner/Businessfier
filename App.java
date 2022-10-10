@@ -1,14 +1,21 @@
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.*;
 
 public class App {
     public static void main(String[] args) throws IOException {
+
+        String[] a = new String[]{"test","helloo","what?","yomama","uno","1","hectorama","fefoas","dres","dos"}; 
+        WordChecker test = new WordChecker(a);
+        test.CheckLength();
+
+
+
         System.out.println("Hello, World!");
         GraphicsPanel panel = new GraphicsPanel();
-
 
         JFrame window = new JFrame("GraphicsPanel");
         window.add(panel);
