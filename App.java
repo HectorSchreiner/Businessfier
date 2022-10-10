@@ -6,8 +6,9 @@ import javax.swing.*;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello World!");
+        System.out.println("Hello, World!");
         GraphicsPanel panel = new GraphicsPanel();
+
 
         JFrame window = new JFrame("GraphicsPanel");
         window.add(panel);
