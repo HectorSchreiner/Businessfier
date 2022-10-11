@@ -28,10 +28,8 @@ public class App {
 
         ParseFile parser = new ParseFile();
         parser.readFile("config.txt");
-        for (var item : parser.FileArray) {
-            System.out.println(item);
-        }
+
         String list = parser.readList(parser.FileArray);
-        System.out.println(list);
+        //System.out.println(list);
     }
 }
