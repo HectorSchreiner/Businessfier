@@ -25,14 +25,17 @@ public class WordCombiner {
     }
 
     public void Combine() {
+        int counter = 0;
 
         for (int i = 0; i < this.placement.size(); i++) {
+            System.out.println(this.placement.get(i));
             if(this.placement.get(i)){
-
                 
-                int index = (int) Math.floor((this.businessWords.size()*Math.random()));
+                
+                int randBusinessIndex = (int) Math.floor((this.businessWords.size()*Math.random()));
 
-                this.Words.add(i, businessWords.get(index));
+                this.Words.add(i+counter, businessWords.get(randBusinessIndex));
+                counter++;
             }
         }
 
