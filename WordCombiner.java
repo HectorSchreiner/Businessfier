@@ -2,41 +2,39 @@ import java.net.SocketImplFactory;
 import java.util.ArrayList;
 
 public class WordCombiner {
-    ArrayList<String> BWords;
+    ArrayList<String> businessWords;
     ArrayList<Boolean> placement;
-    ArrayList<String> Words;
+    ArrayList<String> words;
     ArrayList<String> output;
 
     public WordCombiner(ArrayList<String> input) {
-        this.Words = input;
+        this.words = input;
         GetPlacement();
 
         // gets business words from businessWords clas
         BusinessWords a = new BusinessWords();
         a.GetWords();
-        this.BWords = a.BWords;
+        this.businessWords = a.BWords;
     }
 
     public void GetPlacement() {
-        WordChecker checker = new WordChecker(this.Words);
+        WordChecker checker = new WordChecker(this.words);
 
         checker.CheckLength();
-        this.placement = checker.NeedsWord;
+        this.placement = checker.needsWord;
     }
 
     public void Combine() {
-        for (int i = 0; i < this.Words.size(); i++) {
-            System.out.print(this.Words.get(i) + " ");
+        for (int i = 0; i < this.words.size(); i++) {
+            System.out.print(this.words.get(i) + " ");
         }
 
         for (int i = 0; i < this.placement.size(); i++) {
-
             System.out.print(this.placement.get(i) + " ");
         }
 
-        for (int i = 0; i < this.Words.size(); i++) {
+        for (int i = 0; i < this.words.size(); i++) {
 
         }
-
     }
 }
