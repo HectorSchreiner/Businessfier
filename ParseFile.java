@@ -17,14 +17,18 @@ public class ParseFile {
             Scanner input = new Scanner(file);
 
             while (input.hasNextLine()) {
-                String line = input.nextLine();
-                this.FileArray = splitStringToList(line);
+                try {
+                    String line = input.nextLine();
+                    this.FileArray = splitStringToList(line);
+                } catch (Exception e) {
+                    System.out.println("File is empty");
+                }
             }
 
             input.close();
 
-        } catch (FileNotFoundException e) {
-            System.out.println("No file found!");
+        } catch (FileNotFoundException | NullPointerException e) {
+            System.out.println("Error ocurred on reading the file...");
         }
     }
 
