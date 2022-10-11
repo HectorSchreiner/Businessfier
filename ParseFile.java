@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
@@ -25,16 +26,16 @@ public class ParseFile {
             input.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("No file found! Creating one");
-            File newConfigFile = new File("config.txt");
-            newConfigFile.createNewFile();
+            System.out.println("No file found!");
         }
     }
 
-    public void printParsedFile() {
-        for (var item : this.FileArray) {
-            System.out.println(item);
-        }
+    public String readList(ArrayList<String> inputList) {
+        String listString = inputList.stream().map(Object::toString)
+                .collect(Collectors.joining(" "));
+
+        System.out.println(listString);
+        return listString;
     }
 
     private ArrayList<String> splitStringToList(String input) {
@@ -47,6 +48,9 @@ public class ParseFile {
 
         arr = input.split(" ");
 
+        for (var iterable_element : arr) {
+            System.out.println(iterable_element);
+        }
         return (ArrayList<String>) Arrays.asList(arr);
     }
 }
