@@ -17,12 +17,8 @@ public class ParseFile {
             Scanner input = new Scanner(file);
 
             while (input.hasNextLine()) {
-                try {
-                    String line = input.nextLine();
-                    this.FileArray = splitStringToList(line);
-                } catch (Exception e) {
-                    System.out.println("File is empty");
-                }
+                String line = input.nextLine();
+                this.FileArray = splitStringToList(line);
             }
 
             input.close();
@@ -40,18 +36,18 @@ public class ParseFile {
         return listString;
     }
 
+    private ArrayList<String> splitStringToList(String input) {
+        replacer(input);
+
+        List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
+        return (ArrayList<String>) arr;
+    }
+
     private String replacer(String input) {
         input = input.replace(" ,", ",");
         input = input.replace(" .", ".");
         input = input.replace(" ,", ",");
         input = input.replace(" ,", ",");
         return input;
-    }
-
-    private ArrayList<String> splitStringToList(String input) {
-        replacer(input);
-
-        List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
-        return (ArrayList<String>) arr;
     }
 }

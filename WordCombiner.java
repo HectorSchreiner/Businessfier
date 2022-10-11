@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.lang.Math;  
 
 public class WordCombiner {
-    ArrayList<String> BWords;
+    ArrayList<String> businessWords;
     ArrayList<Boolean> placement;
     ArrayList<String> Words;
 
@@ -13,7 +13,7 @@ public class WordCombiner {
         // gets business words from businessWords clas
         BusinessWords a = new BusinessWords();
         a.GetWords();
-        this.BWords = a.BWords;
+        this.businessWords = a.BWords;
     }
 
     public void GetPlacement() {
@@ -21,7 +21,7 @@ public class WordCombiner {
 
         checker.CheckLength();
 
-        this.placement = checker.NeedsWord;
+        this.placement = checker.needsWord;
     }
 
     public void Combine() {
@@ -30,9 +30,9 @@ public class WordCombiner {
             if(this.placement.get(i)){
 
                 
-                int index = (int) Math.floor((this.BWords.size()*Math.random()));
+                int index = (int) Math.floor((this.businessWords.size()*Math.random()));
 
-                this.Words.add(i, BWords.get(index));
+                this.Words.add(i, businessWords.get(index));
             }
         }
 
