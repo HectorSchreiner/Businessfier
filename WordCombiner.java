@@ -6,33 +6,30 @@ public class WordCombiner {
     ArrayList<String> Words;
     ArrayList<String> output;
 
-    public WordCombiner(ArrayList<String> input){
-        Words = input;
-
+    public WordCombiner(ArrayList<String> input) {
+        this.Words = input;
         GetPlacemt();
 
-
-        //gets business words from businessWords clas
+        // gets business words from businessWords clas
         BusinessWords a = new BusinessWords();
         a.GetWords();
-        BWords = a.BWords;
- 
-        
+        this.BWords = a.BWords;
     }
-    
+
     public void GetPlacemt() {
-        WordChecker x = new WordChecker(Words);
-        x.CheckLength();
-        placement = x.NeedsWord;
+        WordChecker checker = new WordChecker(this.Words);
+
+        checker.CheckLength();
+        this.placement = checker.NeedsWord;
     }
 
     public void Combine() {
-        for (int i = 0; i < Words.size(); i++) {
-            System.out.println(Words.get(i));
+        for (int i = 0; i < this.Words.size(); i++) {
+            System.out.println(this.Words.get(i));
         }
 
-        for (int i = 0; i < placement.size(); i++) {
-            System.out.println(placement.get(i));
+        for (int i = 0; i < this.placement.size(); i++) {
+            System.out.println(this.placement.get(i));
         }
     }
 }

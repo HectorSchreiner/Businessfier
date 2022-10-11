@@ -21,10 +21,8 @@ public class App {
         window.setSize(panel.width, panel.height);
         window.setVisible(true);
 
-        window.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
-
         ParseFile parser = new ParseFile();
         parser.readFile("config.txt");
-        System.out.println(parser.FileArray);
+
     }
 }

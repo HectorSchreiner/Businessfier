@@ -47,10 +47,6 @@ public class ParseFile {
         input = input.replace("-", " - ");
 
         arr = input.split(" ");
-
-        for (var iterable_element : arr) {
-            System.out.println(iterable_element);
-        }
         return (ArrayList<String>) Arrays.asList(arr);
     }
 }

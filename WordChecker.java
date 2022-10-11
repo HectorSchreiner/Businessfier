@@ -4,32 +4,32 @@ public class WordChecker {
     ArrayList<String> Words;
     ArrayList<Boolean> NeedsWord;
 
-    public WordChecker(ArrayList in){
-        Words = in;
-        NeedsWord = new ArrayList<Boolean>();
+    public WordChecker(ArrayList<String> input) {
+        this.Words = input;
+        this.NeedsWord = new ArrayList<Boolean>();
     }
 
-    //fills the input list with words, only used for debugging
+    // fills the input list with words, only used for debugging
     public void FillWords() {
-        for (int i = 0; i <10; i++) {
-            if(i%2==0){
-                Words.set(i, "teststring");
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                this.Words.set(i, "teststring");
             } else {
-                Words.set(i, "test");
+                this.Words.set(i, "test");
             }
-        System.out.println(Words.get(i));
+            System.out.println(this.Words.get(i));
         }
     }
-    
-    //chesks wether or not a word has more than five caretors
+
+    // chesks wether or not a word has more than five caracters
     public void CheckLength() {
-        for(int i = 0; i<Words.size();i++){
-            if(Words.get(i).length()>5){
-                NeedsWord.add(true);
+        for (int i = 0; i < this.Words.size(); i++) {
+            if (this.Words.get(i).length() > 5) {
+                this.NeedsWord.add(true);
             } else {
-                NeedsWord.add(false);
+                this.NeedsWord.add(false);
             }
-        System.out.println(NeedsWord.get(i));
+            System.out.println(this.NeedsWord.get(i));
         }
     }
 }
