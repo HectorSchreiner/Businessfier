@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello, World!");
         GraphicsPanel panel = new GraphicsPanel();
 
         JFrame window = new JFrame("GraphicsPanel");
@@ -17,14 +16,10 @@ public class App {
         window.setVisible(true);
 
         window.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
-        
-        //Writes console input to a .txt file
-        SaveSystem file = new SaveSystem();
-        Scanner input = new Scanner(System.in);;
-        file.write(input.nextLine());
-    }
 
-    public static void gameLoop() {
+        ParseFile parser = new ParseFile();
+        parser.readFile("config.txt");
+        parser.printParsedFile();
 
     }
 }
