@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class SaveSystem {
-	public static void write(String text, String fileName) throws IOException{
+	public static void write(String text, String fileName) throws IOException {
 		FileWriter file = new FileWriter(fileName);
 		PrintWriter out = new PrintWriter(file);
 		out.close();

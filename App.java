@@ -28,8 +28,11 @@ public class App {
 
         ParseFile parser = new ParseFile();
         parser.readFile("config.txt");
+<<<<<<< HEAD
 
         String list = parser.readList(parser.FileArray);
         //System.out.println(list);
+=======
+>>>>>>> 0dcc1c6b9c120c97cd83a042b8e23aefd220bd8d
     }
 }

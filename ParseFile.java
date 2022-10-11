@@ -17,29 +17,39 @@ public class ParseFile {
             Scanner input = new Scanner(file);
 
             while (input.hasNextLine()) {
-                String line = input.nextLine();
-                this.FileArray = splitStringToList(line);
+                try {
+                    String line = input.nextLine();
+                    this.FileArray = splitStringToList(line);
+                } catch (Exception e) {
+                    System.out.println("File is empty");
+                }
             }
 
             input.close();
 
-        } catch (FileNotFoundException e) {
-            System.out.println("No file found!");
+        } catch (FileNotFoundException | NullPointerException e) {
+            System.out.println("Error ocurred on reading the file...");
         }
     }
 
     public String readList(ArrayList<String> inputList) {
         String listString = inputList.stream().map(Object::toString)
                 .collect(Collectors.joining(" "));
+        replacer(listString);
+
         return listString;
     }
 
+    private String replacer(String input) {
+        input = input.replace(" ,", ",");
+        input = input.replace(" .", ".");
+        input = input.replace(" ,", ",");
+        input = input.replace(" ,", ",");
+        return input;
+    }
+
     private ArrayList<String> splitStringToList(String input) {
-        input = input.replace(",", " ,");
-        input = input.replace(".", " .");
-        input = input.replace("!", " !");
-        input = input.replace(":", " :");
-        input = input.replace("-", " - ");
+        replacer(input);
 
         List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
         return (ArrayList<String>) arr;

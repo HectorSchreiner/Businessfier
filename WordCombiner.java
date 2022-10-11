@@ -8,7 +8,7 @@ public class WordCombiner {
 
     public WordCombiner(ArrayList<String> input) {
         this.Words = input;
-        GetPlacemt();
+        GetPlacement();
 
         // gets business words from businessWords clas
         BusinessWords a = new BusinessWords();
@@ -16,7 +16,7 @@ public class WordCombiner {
         this.BWords = a.BWords;
     }
 
-    public void GetPlacemt() {
+    public void GetPlacement() {
         WordChecker checker = new WordChecker(this.Words);
 
         checker.CheckLength();
@@ -25,6 +25,7 @@ public class WordCombiner {
     }
 
     public void Combine() {
+<<<<<<< HEAD
 
         for (int i = 0; i < this.placement.size(); i++) {
             if(this.placement.get(i)){
@@ -38,6 +39,19 @@ public class WordCombiner {
 
         for (var i : this.Words) {
             System.out.print(i+" ");
+=======
+        for (int i = 0; i < this.Words.size(); i++) {
+            System.out.print(this.Words.get(i) + " ");
+        }
+
+        for (int i = 0; i < this.placement.size(); i++) {
+
+            System.out.print(this.placement.get(i) + " ");
+        }
+
+        for (int i = 0; i < this.Words.size(); i++) {
+
+>>>>>>> 0dcc1c6b9c120c97cd83a042b8e23aefd220bd8d
         }
     }
 }
