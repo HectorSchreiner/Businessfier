@@ -4,11 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class ParseFile {
@@ -23,6 +20,7 @@ public class ParseFile {
                 String line = input.nextLine();
                 this.FileArray = splitStringToList(line);
             }
+
             input.close();
 
         } catch (FileNotFoundException e) {
@@ -33,20 +31,17 @@ public class ParseFile {
     public String readList(ArrayList<String> inputList) {
         String listString = inputList.stream().map(Object::toString)
                 .collect(Collectors.joining(" "));
-
-        System.out.println(listString);
         return listString;
     }
 
     private ArrayList<String> splitStringToList(String input) {
-        String[] arr = {};
         input = input.replace(",", " ,");
         input = input.replace(".", " .");
         input = input.replace("!", " !");
         input = input.replace(":", " :");
         input = input.replace("-", " - ");
 
-        arr = input.split(" ");
-        return (ArrayList<String>) Arrays.asList(arr);
+        List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
+        return (ArrayList<String>) arr;
     }
 }

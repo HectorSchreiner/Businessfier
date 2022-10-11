@@ -1,13 +1,10 @@
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javax.swing.*;
 
 public class App {
     public static void main(String[] args) throws IOException {
-
 
         // Emils no tucthy zone
         ArrayList<String> testString = new ArrayList<String>();
@@ -21,9 +18,7 @@ public class App {
         WordCombiner test = new WordCombiner(testString);
         test.Combine();
 
-        //-------------------------------
-
-
+        // -------------------------------
 
         GraphicsPanel panel = new GraphicsPanel();
 
@@ -36,6 +31,10 @@ public class App {
 
         ParseFile parser = new ParseFile();
         parser.readFile("config.txt");
-
+        for (var item : parser.FileArray) {
+            System.out.println(item);
+        }
+        String list = parser.readList(parser.FileArray);
+        System.out.println(list);
     }
 }
