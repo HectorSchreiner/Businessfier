@@ -58,7 +58,7 @@ public class GraphicsPanel extends JPanel {
 				//TODO temporary test setup/error handling
 				SaveSystem file = new SaveSystem();
 				try {
-					file.write(TextArea.getText());
+					file.write(TextArea.getText(), "InputText.txt");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -68,6 +68,4 @@ public class GraphicsPanel extends JPanel {
 			}
 		});
 	}
-
-
 }
