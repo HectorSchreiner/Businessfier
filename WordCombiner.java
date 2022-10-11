@@ -25,7 +25,6 @@ public class WordCombiner {
     }
 
     public void Combine() {
-<<<<<<< HEAD
 
         for (int i = 0; i < this.placement.size(); i++) {
             if(this.placement.get(i)){
@@ -39,19 +38,6 @@ public class WordCombiner {
 
         for (var i : this.Words) {
             System.out.print(i+" ");
-=======
-        for (int i = 0; i < this.Words.size(); i++) {
-            System.out.print(this.Words.get(i) + " ");
-        }
-
-        for (int i = 0; i < this.placement.size(); i++) {
-
-            System.out.print(this.placement.get(i) + " ");
-        }
-
-        for (int i = 0; i < this.Words.size(); i++) {
-
->>>>>>> 0dcc1c6b9c120c97cd83a042b8e23aefd220bd8d
         }
     }
 }
