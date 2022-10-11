@@ -25,11 +25,11 @@ public class WordCombiner {
 
     public void Combine() {
         for (int i = 0; i < this.Words.size(); i++) {
-            System.out.println(this.Words.get(i));
+            System.out.print(this.Words.get(i) + " ");
         }
-
+        System.out.println("");
         for (int i = 0; i < this.placement.size(); i++) {
-            System.out.println(this.placement.get(i));
+            System.out.print(this.placement.get(i) + " ");
         }
     }
 }

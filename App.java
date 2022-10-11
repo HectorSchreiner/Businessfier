@@ -8,9 +8,22 @@ import javax.swing.*;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        WordCombiner test = new WordCombiner(null);
 
-        System.out.println("Hello, World!");
+        // Emils no tucthy zone
+        ArrayList<String> testString = new ArrayList<String>();
+        testString.add("hej");
+        testString.add("lassebasse");
+        testString.add("hej");
+        testString.add("lassebasse");
+        testString.add("hej");
+        testString.add("lassebasse");
+
+        WordCombiner test = new WordCombiner(testString);
+        test.Combine();
+
+        //-------------------------------
+
+
 
         GraphicsPanel panel = new GraphicsPanel();
 

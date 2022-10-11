@@ -17,7 +17,7 @@ public class WordChecker {
             } else {
                 this.Words.set(i, "test");
             }
-            System.out.println(this.Words.get(i));
+
         }
     }
 
@@ -29,7 +29,6 @@ public class WordChecker {
             } else {
                 this.NeedsWord.add(false);
             }
-            System.out.println(this.NeedsWord.get(i));
         }
     }
 }
