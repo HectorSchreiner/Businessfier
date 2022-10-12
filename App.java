@@ -17,6 +17,5 @@ public class App {
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.setSize(450, 350);
         window.setVisible(true);
-
     }
 }
