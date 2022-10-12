@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ParseFile {
-    ArrayList<String> FileArray;
+    ArrayList<String> FileArray = new ArrayList<String>();
 
     public void readFile(String fileName) throws IOException {
         try {
@@ -18,7 +18,7 @@ public class ParseFile {
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
-                this.FileArray = splitStringToList(line);
+                this.FileArray.addAll(splitStringToList(line));
             }
 
             input.close();
@@ -37,16 +37,13 @@ public class ParseFile {
     }
 
     private String replacer(String input) {
-        input = input.replace(" ,", ",");
-        input = input.replace(" .", ".");
-        input = input.replace(" ,", ",");
-        input = input.replace(" ,", ",");
+        input = input.replace(",", " ,");
+        input = input.replace(".", " .");
         return input;
     }
 
     private ArrayList<String> splitStringToList(String input) {
-        replacer(input);
-
+        input = replacer(input);
         List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
         return (ArrayList<String>) arr;
     }

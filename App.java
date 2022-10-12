@@ -6,16 +6,16 @@ import javax.swing.*;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        ArrayList<String> testString = new ArrayList<String>();
-        testString.add("hej");
-        testString.add("lassebasse");
-        testString.add("hej");
-        testString.add("lassebasse");
-        testString.add("hej");
-        testString.add("lassebasse");
+        // ArrayList<String> testString = new ArrayList<String>();
+        // testString.add("hej");
+        // testString.add("lassebasse");
+        // testString.add("hej");
+        // testString.add("lassebasse");
+        // testString.add("hej");
+        // testString.add("lassebasse");
 
-        WordCombiner test = new WordCombiner(testString);
-        test.Combine();
+        // WordCombiner test = new WordCombiner(testString);
+        // test.Combine();
 
         GraphicsPanel panel = new GraphicsPanel();
 

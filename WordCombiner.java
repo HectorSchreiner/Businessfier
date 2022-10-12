@@ -28,13 +28,9 @@ public class WordCombiner {
         for (int i = 0; i < this.Words.size(); i++) {
             System.out.print(this.Words.get(i) + " ");
         }
-        
+
         for (int i = 0; i < this.placement.size(); i++) {
             System.out.print(this.placement.get(i) + " ");
-        }
-
-        for (int i = 0; i < this.words.length; i++) {
-            
         }
 
     }
