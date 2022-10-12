@@ -28,7 +28,9 @@ public class WordCombiner {
     }
 
     public void Combine() {
-        int counter = 0;
+        for (int i = 0; i < this.Words.size(); i++) {
+            System.out.print(this.Words.get(i) + " ");
+        }
 
         for (int i = 0; i < this.placement.size(); i++) {
             System.out.println(this.placement.get(i));
@@ -47,8 +49,9 @@ public class WordCombiner {
             }
         }
 
-        for (var i : this.Words) {
-            System.out.print(i + " ");
+        for (int i = 0; i < this.words.length; i++) {
+
         }
+
     }
 }
