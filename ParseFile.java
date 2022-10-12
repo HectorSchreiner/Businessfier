@@ -23,8 +23,8 @@ public class ParseFile {
 
             input.close();
 
-        } catch (FileNotFoundException e) {
-            System.out.println("No file found!");
+        } catch (FileNotFoundException | NullPointerException e) {
+            System.out.println("Error ocurred on reading the file...");
         }
     }
 
@@ -36,15 +36,16 @@ public class ParseFile {
         return listString;
     }
 
+    private ArrayList<String> splitStringToList(String input) {
+        replacer(input);
+
+        List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
+        return (ArrayList<String>) arr;
+    }
+
     private String replacer(String input) {
         input = input.replace(",", " ,");
         input = input.replace(".", " .");
         return input;
-    }
-
-    private ArrayList<String> splitStringToList(String input) {
-        input = replacer(input);
-        List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
-        return (ArrayList<String>) arr;
     }
 }

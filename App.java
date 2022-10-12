@@ -6,16 +6,8 @@ import javax.swing.*;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        // ArrayList<String> testString = new ArrayList<String>();
-        // testString.add("hej");
-        // testString.add("lassebasse");
-        // testString.add("hej");
-        // testString.add("lassebasse");
-        // testString.add("hej");
-        // testString.add("lassebasse");
-
-        // WordCombiner test = new WordCombiner(testString);
-        // test.Combine();
+        WordCombiner combiner = new WordCombiner("config.txt");
+        combiner.Combine();
 
         GraphicsPanel panel = new GraphicsPanel();
 
@@ -26,12 +18,5 @@ public class App {
         window.setSize(450, 350);
         window.setVisible(true);
 
-        ParseFile parser = new ParseFile();
-        parser.readFile("config.txt");
-        for (var item : parser.FileArray) {
-            System.out.println(item);
-        }
-        String list = parser.readList(parser.FileArray);
-        System.out.println(list);
     }
 }

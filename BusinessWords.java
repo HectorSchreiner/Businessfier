@@ -1,14 +1,14 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BusinessWords {
-    ArrayList<String> BWords = new ArrayList<String>();
+    ArrayList<String> businessWordArray = new ArrayList<String>();
 
-    public void GetWords() {
-        BWords.add("Ultra-cool");
-        BWords.add("extra-high-tech");
+    public void GetWords() throws IOException {
+        ParseFile parser = new ParseFile();
+        parser.readFile("BusinessWords.txt");
 
-        // Should read bussinwords from a txt file and fill the string "BusinessWords"
-        // with them
+        this.businessWordArray = parser.FileArray;
     }
 
 }
