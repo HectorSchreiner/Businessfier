@@ -31,7 +31,7 @@ public class ParseFile {
     }
 
     // takes a given list, and converts to a string with correct formatting
-    public String readList(ArrayList<String> inputList) {
+    public String listToString(ArrayList<String> inputList) {
         String[] symbols = { " ,", " ." };
         String[] replacements = { ",", "." };
 

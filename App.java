@@ -15,7 +15,4 @@ public class App {
         window.setVisible(true);
     }
 
-    public void readInput() throws IOException {
-    }
-
 }

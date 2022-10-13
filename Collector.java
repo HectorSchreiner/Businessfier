@@ -12,7 +12,7 @@ public class Collector {
         ArrayList<String> wordList = new ArrayList<>();
         ArrayList<Boolean> placementList = new ArrayList<>();
 
-        // der manipuleres med userinputlist, så det er også den vi returnerer
+        // der manipuleres med userinputlist. Det er også den vi returnerer
         ArrayList<String> userInputList = parser.splitStringToList(userInput);
 
         // gets list of words, from a txt file
@@ -21,9 +21,6 @@ public class Collector {
         } catch (IOException e) {
             System.out.println("Hovsa, noget gik galt!");
         }
-
-        // programmet skal crashe hvis de to ikke har samme størrelse
-        assert (placementList.size() == userInputList.size());
 
         // kalder Algoritmen og returnerer placement listen. Til hvor ord skal skiftes
         placementList = Algoritm(userInputList, placementList);
@@ -35,7 +32,8 @@ public class Collector {
                 j += 1;
             }
         }
-        return parser.readList(userInputList);
+        System.out.println("userinput as string: " + parser.listToString(userInputList));
+        return parser.listToString(userInputList);
     }
 
     private String GetRandWord(ArrayList<String> list) {
@@ -45,6 +43,7 @@ public class Collector {
     }
 
     private ArrayList<Boolean> Algoritm(ArrayList<String> userInputList, ArrayList<Boolean> placementList) {
+
         int lengthLimit = 11;
         ParseFile parser = new ParseFile();
 
@@ -52,21 +51,12 @@ public class Collector {
         try {
             ArrayList<String> adjektiver = parser.readFile("Adjektiver.txt");
             ArrayList<String> nouns = parser.readFile("EnglishNouns.txt");
+            ArrayList<String> workWord = parser.readFile("WorkRelatedWords.txt");
 
-            for (int i = 0; i < userInputList.size(); i++) {
-                for (var adjektiv : adjektiver) {
-                    if (userInputList.get(i).equals(adjektiv)) {
-                        placementList.add(i, true);
-                    }
-                }
-            }
-            for (int i = 0; i < userInputList.size(); i++) {
-                for (var noun : nouns) {
-                    if (userInputList.get(i).equals(noun)) {
-                        placementList.add(i, true);
-                    }
-                }
-            }
+            addToPlacementList(userInputList, adjektiver, placementList);
+            addToPlacementList(userInputList, nouns, placementList);
+            addToPlacementList(userInputList, workWord, placementList);
+
         } catch (Exception e) {
         }
 
@@ -75,7 +65,17 @@ public class Collector {
             Boolean val = item.length() >= lengthLimit ? true : false;
             placementList.add(val);
         }
-
         return placementList;
+    }
+
+    private void addToPlacementList(ArrayList<String> userInputList, ArrayList<String> wordList,
+            ArrayList<Boolean> placementList) {
+        for (int i = 0; i < userInputList.size(); i++) {
+            for (var word : wordList) {
+                if (userInputList.get(i).equals(word)) {
+                    placementList.add(i, true);
+                }
+            }
+        }
     }
 }

@@ -53,15 +53,10 @@ public class GraphicsPanel extends JPanel {
 		ActionButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Call the algorithm
-				System.out.println(TextArea.getText());
-
-				// TODO temporary test setup/error handling
-				SaveSystem file = new SaveSystem();
 
 				Collector collector = new Collector();
 				String newOutput = collector.Collect(TextArea.getText(), "BusinessWords.txt");
-				System.out.println(newOutput);
+				System.out.println("Output: " + newOutput);
 
 				OutputText.setText(newOutput);
 			}
