@@ -11,13 +11,13 @@ public class WordCombiner {
     public WordCombiner(String fileName) throws IOException {
         ParseFile parser = new ParseFile();
         parser.readFile(fileName);
-        this.Words = parser.FileArray;
+        this.Words = parser.readFile(fileName);
         GetPlacement();
 
         // gets business words from businessWords clas
         BusinessWords b = new BusinessWords();
         b.GetWords();
-        //System.out.println("test");
+        // System.out.println("test");
         this.businessWords = b.businessWordArray;
     }
 
@@ -43,7 +43,7 @@ public class WordCombiner {
         }
 
         for (int i = 0; i < this.Words.size(); i++) {
-            System.out.print(this.Words.get(i)+" ");
+            System.out.print(this.Words.get(i) + " ");
         }
 
     }

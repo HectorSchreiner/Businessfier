@@ -9,25 +9,28 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ParseFile {
-    ArrayList<String> FileArray = new ArrayList<String>();
 
-    public void readFile(String fileName) throws IOException {
+    // reads a file, and returns arraylist of files content with the correct
+    // formatting
+    public ArrayList<String> readFile(String fileName) throws IOException {
+        ArrayList<String> fileArray = new ArrayList<String>();
         try {
             File file = new File(fileName);
             Scanner input = new Scanner(file);
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
-                this.FileArray.addAll(splitStringToList(line));
+                fileArray.addAll(splitStringToList(line));
             }
 
             input.close();
-
         } catch (FileNotFoundException | NullPointerException e) {
             System.out.println("Error ocurred on reading the file...");
         }
+        return fileArray;
     }
 
+    // takes a given list, and converts to a string with correct formatting
     public String readList(ArrayList<String> inputList) {
         String[] symbols = { " ,", " ." };
         String[] replacements = { ",", "." };
@@ -39,7 +42,8 @@ public class ParseFile {
         return listString;
     }
 
-    private ArrayList<String> splitStringToList(String input) {
+    // given a string as input, returns it as a new arraylist, formattet correctly
+    public ArrayList<String> splitStringToList(String input) {
         String[] symbols = { ",", "." };
         String[] replacements = { " ,", " ." };
         replacer(input, symbols, replacements);

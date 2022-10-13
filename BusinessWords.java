@@ -6,9 +6,7 @@ public class BusinessWords {
 
     public void GetWords() throws IOException {
         ParseFile parser = new ParseFile();
-        parser.readFile("BusinessWords.txt");
-
-        this.businessWordArray = parser.FileArray;
+        this.businessWordArray = parser.readFile("BusinessWords.txt");
     }
 
 }
