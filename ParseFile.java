@@ -32,8 +32,8 @@ public class ParseFile {
 
     // takes a given list, and converts to a string with correct formatting
     public String listToString(ArrayList<String> inputList) {
-        String[] symbols = { " ,", " ." };
-        String[] replacements = { ",", "." };
+        String[] symbols = { " ,", " .", "\n" };
+        String[] replacements = { ",", ".", " " };
 
         String listString = inputList.stream().map(Object::toString)
                 .collect(Collectors.joining(" "));
@@ -44,8 +44,8 @@ public class ParseFile {
 
     // given a string as input, returns it as a new arraylist, formattet correctly
     public ArrayList<String> splitStringToList(String input) {
-        String[] symbols = { ",", ".", "m.", "  ", "m. " };
-        String[] replacements = { " ,", " .", " ", " ", " " };
+        String[] symbols = { ",", ".", "m.", "  ", "m. ", "\n", "\r" };
+        String[] replacements = { " ,", " .", " ", " ", " ", " ", " " };
         replacer(input, symbols, replacements);
 
         List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));

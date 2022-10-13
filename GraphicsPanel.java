@@ -1,13 +1,17 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.concurrent.DelayQueue;
 
 import javax.swing.*;
 
 public class GraphicsPanel extends JPanel {
-	public GraphicsPanel() {
+	public GraphicsPanel() throws IOException {
 		setLayout(null);
 
 		JPanel MainPanel = new JPanel();
@@ -56,9 +60,22 @@ public class GraphicsPanel extends JPanel {
 
 				Collector collector = new Collector();
 				String newOutput = collector.Collect(TextArea.getText(), "BusinessWords.txt");
-				System.out.println("Output: " + newOutput);
-
+				System.out.println(newOutput);
 				OutputText.setText(newOutput);
+
+				ParseFile parserFile = new ParseFile();
+				try (FileWriter file = new FileWriter("config.txt")) {
+					try {
+						file.write(newOutput);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
 	}

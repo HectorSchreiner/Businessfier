@@ -32,7 +32,6 @@ public class Collector {
                 j += 1;
             }
         }
-        System.out.println("userinput as string: " + parser.listToString(userInputList));
         return parser.listToString(userInputList);
     }
 
@@ -44,7 +43,7 @@ public class Collector {
 
     private ArrayList<Boolean> Algoritm(ArrayList<String> userInputList, ArrayList<Boolean> placementList) {
 
-        int lengthLimit = 11;
+        int lengthLimit = 7;
         ParseFile parser = new ParseFile();
 
         // hvis der er et adjektiv skal der sættes endnu et foran
