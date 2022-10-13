@@ -25,7 +25,6 @@ public class Collector {
         assert (placementList.size() == userInputList.size());
 
         // kalder Algoritmen og returnerer placement listen. Til hvor ord skal skiftes
-        // ud
         placementList = Algoritm(userInputList, placementList);
 
         // tilføjer random ord fra wordlist til userinputlist hvis
