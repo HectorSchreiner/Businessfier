@@ -29,23 +29,29 @@ public class ParseFile {
     }
 
     public String readList(ArrayList<String> inputList) {
+        String[] symbols = { " ,", " ." };
+        String[] replacements = { ",", "." };
+
         String listString = inputList.stream().map(Object::toString)
                 .collect(Collectors.joining(" "));
-        replacer(listString);
+        replacer(listString, symbols, replacements);
 
         return listString;
     }
 
     private ArrayList<String> splitStringToList(String input) {
-        replacer(input);
+        String[] symbols = { ",", "." };
+        String[] replacements = { " ,", " ." };
+        replacer(input, symbols, replacements);
 
         List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));
         return (ArrayList<String>) arr;
     }
 
-    private String replacer(String input) {
-        input = input.replace(",", " ,");
-        input = input.replace(".", " .");
+    private String replacer(String input, String[] symbols, String[] replacements) {
+        for (int i = 0; i < symbols.length; i++) {
+            input = input.replace(symbols[i], replacements[i]);
+        }
         return input;
     }
 }
