@@ -6,8 +6,7 @@ import javax.swing.*;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        WordCombiner combiner = new WordCombiner("config.txt");
-        combiner.Combine();
+
 
         GraphicsPanel panel = new GraphicsPanel();
 
@@ -19,4 +18,8 @@ public class App {
         window.setVisible(true);
 
     }
+
+    public void readInput() throws IOException {
+    }
+
 }

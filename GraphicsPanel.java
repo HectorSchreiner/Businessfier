@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.concurrent.DelayQueue;
 
 import javax.swing.*;
 
@@ -59,7 +60,17 @@ public class GraphicsPanel extends JPanel {
 				SaveSystem file = new SaveSystem();
 				try {
 					file.write(TextArea.getText(), "InputText.txt");
+
+					Thread.sleep(2000);
+
+					WordCombiner combiner = new WordCombiner("InputText.txt");
+					combiner.Combine();
+
+					System.out.println("test");
 				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}

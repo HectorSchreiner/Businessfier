@@ -28,29 +28,22 @@ public class WordCombiner {
     }
 
     public void Combine() {
-        for (int i = 0; i < this.Words.size(); i++) {
-            System.out.print(this.Words.get(i) + " ");
-        }
+        int counter = 0;
 
         for (int i = 0; i < this.placement.size(); i++) {
-            System.out.println(this.placement.get(i));
 
             if (this.placement.get(i)) {
 
                 Random r = new Random();
-                int result = r.nextInt(100);
+                int result = r.nextInt(businessWords.size());
 
-
-
-                //int randBusinessIndex = (int) Math.floor((this.businessWords.size() * Math.random()));
-                System.out.println(businessWords.get(5));
                 this.Words.add(i + counter, businessWords.get(result));
                 counter++;
             }
         }
 
-        for (int i = 0; i < this.words.length; i++) {
-
+        for (int i = 0; i < this.Words.size(); i++) {
+            System.out.print(this.Words.get(i)+" ");
         }
 
     }
