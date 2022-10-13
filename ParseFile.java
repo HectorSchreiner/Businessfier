@@ -44,8 +44,8 @@ public class ParseFile {
 
     // given a string as input, returns it as a new arraylist, formattet correctly
     public ArrayList<String> splitStringToList(String input) {
-        String[] symbols = { ",", "." };
-        String[] replacements = { " ,", " ." };
+        String[] symbols = { ",", ".", "m.", "  ", "m. " };
+        String[] replacements = { " ,", " .", " ", " ", " " };
         replacer(input, symbols, replacements);
 
         List<String> arr = new ArrayList<String>(Arrays.asList(input.split(" ")));

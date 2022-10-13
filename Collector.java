@@ -22,6 +22,7 @@ public class Collector {
             System.out.println("Hovsa, noget gik galt!");
         }
 
+        // programmet skal crashe hvis de to ikke har samme størrelse
         assert (placementList.size() == userInputList.size());
 
         // kalder Algoritmen og returnerer placement listen. Til hvor ord skal skiftes
@@ -34,7 +35,6 @@ public class Collector {
                 j += 1;
             }
         }
-
         return parser.readList(userInputList);
     }
 
@@ -44,12 +44,38 @@ public class Collector {
         return randWord;
     }
 
-    // hvis userInputList ord er længere end 5 characters, skal der et businessord
     private ArrayList<Boolean> Algoritm(ArrayList<String> userInputList, ArrayList<Boolean> placementList) {
+        int lengthLimit = 11;
+        ParseFile parser = new ParseFile();
+
+        // hvis der er et adjektiv skal der sættes endnu et foran
+        try {
+            ArrayList<String> adjektiver = parser.readFile("Adjektiver.txt");
+            ArrayList<String> nouns = parser.readFile("EnglishNouns.txt");
+
+            for (int i = 0; i < userInputList.size(); i++) {
+                for (var adjektiv : adjektiver) {
+                    if (userInputList.get(i).equals(adjektiv)) {
+                        placementList.add(i, true);
+                    }
+                }
+            }
+            for (int i = 0; i < userInputList.size(); i++) {
+                for (var noun : nouns) {
+                    if (userInputList.get(i).equals(noun)) {
+                        placementList.add(i, true);
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+
+        // hvis userInputList ord er længere end 5 characters, skal der et businessord
         for (var item : userInputList) {
-            Boolean val = item.length() >= 5 ? true : false;
+            Boolean val = item.length() >= lengthLimit ? true : false;
             placementList.add(val);
         }
+
         return placementList;
     }
 }

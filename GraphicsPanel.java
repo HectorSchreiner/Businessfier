@@ -58,24 +58,12 @@ public class GraphicsPanel extends JPanel {
 
 				// TODO temporary test setup/error handling
 				SaveSystem file = new SaveSystem();
-				try {
-					file.write(TextArea.getText(), "InputText.txt");
 
-					Thread.sleep(2000);
+				Collector collector = new Collector();
+				String newOutput = collector.Collect(TextArea.getText(), "BusinessWords.txt");
+				System.out.println(newOutput);
 
-					WordCombiner combiner = new WordCombiner("InputText.txt");
-					combiner.Combine();
-
-					System.out.println("test");
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				OutputText.setText(TextArea.getText());
+				OutputText.setText(newOutput);
 			}
 		});
 	}
