@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class Collector {
 
@@ -35,6 +34,7 @@ public class Collector {
         return parser.listToString(userInputList);
     }
 
+    // får et random
     private String GetRandWord(ArrayList<String> list) {
         Random rand = new Random();
         String randWord = list.get(rand.nextInt(list.size()));
@@ -46,20 +46,22 @@ public class Collector {
         int lengthLimit = 7;
         ParseFile parser = new ParseFile();
 
-        // hvis der er et adjektiv skal der sættes endnu et foran
+        // hvis der er et ord fra en af de nedenstående filer, skal der sættes endnu et
+        // foran!
         try {
             ArrayList<String> adjektiver = parser.readFile("Adjektiver.txt");
             ArrayList<String> nouns = parser.readFile("EnglishNouns.txt");
-            ArrayList<String> workWord = parser.readFile("WorkRelatedWords.txt");
+            ArrayList<String> workRelatedWord = parser.readFile("WorkRelatedWords.txt");
 
-            addToPlacementList(userInputList, adjektiver, placementList);
-            addToPlacementList(userInputList, nouns, placementList);
-            addToPlacementList(userInputList, workWord, placementList);
+            placementList = addIf(addToPlacementList(userInputList, adjektiver, placementList), placementList);
+            placementList = addIf(addToPlacementList(userInputList, nouns, placementList), placementList);
+            placementList = addIf(addToPlacementList(userInputList, workRelatedWord, placementList), placementList);
 
         } catch (Exception e) {
         }
 
-        // hvis userInputList ord er længere end 5 characters, skal der et businessord
+        // hvis userInputList ord er længere end lenghtlimit characters, skal der et
+        // businessord ind.
         for (var item : userInputList) {
             Boolean val = item.length() >= lengthLimit ? true : false;
             placementList.add(val);
@@ -67,7 +69,8 @@ public class Collector {
         return placementList;
     }
 
-    private void addToPlacementList(ArrayList<String> userInputList, ArrayList<String> wordList,
+    // sætter ord fra den givne liste ind.
+    private ArrayList<Boolean> addToPlacementList(ArrayList<String> userInputList, ArrayList<String> wordList,
             ArrayList<Boolean> placementList) {
         for (int i = 0; i < userInputList.size(); i++) {
             for (var word : wordList) {
@@ -76,5 +79,18 @@ public class Collector {
                 }
             }
         }
+        return placementList;
+    }
+
+    // hvis placementlist ikke er true når algoritmen siger den skal, skal den
+    // ændres til true!
+    private ArrayList<Boolean> addIf(ArrayList<Boolean> list, ArrayList<Boolean> outputList) {
+        for (int i = 0; i < outputList.size(); i++) {
+            if (list.get(i) && outputList.get(i)) {
+                outputList.set(i, true);
+            }
+
+        }
+        return outputList;
     }
 }
