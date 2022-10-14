@@ -1,10 +1,16 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class GraphicsPanel extends JPanel {
 	public GraphicsPanel() {
@@ -60,12 +66,22 @@ public class GraphicsPanel extends JPanel {
 
 		JPanel PanelButtom = new JPanel();
 		MainPanel.add(PanelButtom);
-		PanelButtom.setLayout(null);
 
 		String[] optionsToChoose = { "BusinessWords.txt", "BabyWords.txt" };
+		PanelButtom.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JComboBox<String> ComboBox = new JComboBox(optionsToChoose);
-		ComboBox.setBounds(0, 21, 225, 63);
 		PanelButtom.add(ComboBox);
+		
+		JButton FileButton = new JButton("Open File");
+		FileButton.setHorizontalAlignment(SwingConstants.RIGHT);
+		FileButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		PanelButtom.add(FileButton);
+		FileButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OpenFile(TextArea);
+			}
+		});
 
 		JButton ActionButton = new JButton("Generate");
 		ActionButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -78,7 +94,46 @@ public class GraphicsPanel extends JPanel {
 				Collector collector = new Collector();
 				String newOutput = collector.Collect(TextArea.getText(), fileName);
 				OutputText.setText(newOutput);
+				
+				try {
+					SaveFile(newOutput, "OutputFile.txt");
+				} catch (IOException ee) {
+					// TODO Auto-generated catch block
+					ee.printStackTrace();
+				}
 			}
 		});
+	}
+	
+	//Opens a text-file, and inserts its content into a JTextArea
+	private void OpenFile(JTextArea fileTextField) {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+		
+		//Added filter which makes sure only text files can be selected
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+		fileChooser.setFileFilter(filter);
+
+		int result = fileChooser.showOpenDialog(this);
+		if (result == JFileChooser.APPROVE_OPTION) {
+		    File selectedFile = fileChooser.getSelectedFile();
+		    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		    try {
+				fileTextField.setText(Files.readString(selectedFile.toPath()));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	//Saves a string to a fileName
+	private void SaveFile(String fileText, String fileName) throws IOException {
+		FileWriter file = new FileWriter(fileName);
+		PrintWriter out = new PrintWriter(file);
+		
+		out.print(fileText);
+		out.close();
+		System.out.println("Text saved to: " + fileName);
 	}
 }
